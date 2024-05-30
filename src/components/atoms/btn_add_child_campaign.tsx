@@ -1,17 +1,10 @@
-import { Box, IconButton, Typography } from "@mui/material";
-import React, { useState } from "react";
-import BoxInfo from "./box_info";
+import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 
-interface Props {
-  adQuantity: number;
-}
-const GeneralInfo = (props: Props) => {
-  const [boxCount, setBoxCount] = useState(1);
-
-  const handleAddBoxInfo = () => {
-    setBoxCount(boxCount + 1);
-  };
+const BtnAddChildCampaign = (props: {
+  handleAddBoxInfo: (data: any) => void;
+}) => {
+  const { handleAddBoxInfo } = props;
   return (
     <>
       <div
@@ -37,16 +30,7 @@ const GeneralInfo = (props: Props) => {
           <AddIcon sx={{ color: "red" }} />{" "}
         </IconButton>
       </div>
-      <div
-        className="box-container"
-        style={{ display: "flex", width: "100%", overflow: "auto" }}
-      >
-        {[...Array(boxCount)].map((_, index) => (
-          <BoxInfo index={index + 1} adQuantity={props.adQuantity} />
-        ))}
-      </div>
     </>
   );
 };
-
-export default GeneralInfo;
+export default BtnAddChildCampaign;
